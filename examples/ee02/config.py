@@ -11,6 +11,12 @@ FRAME_PORT = 8080
 # Note: we don't enable host validation, just encryption to avoid having to store a certificate store
 FRAME_TLS = FRAME_PORT == 443
 
+# The panel's program comes from the frame itself: the path carries a token
+# no one guesses and skips any reverse-proxy auth, which would otherwise
+# answer the board's HTTP client with a 302 it cannot use. Checked every
+# OTA_EVERY_N_RUNS wakes in main.py, or at once when button 2 wakes the board.
+FIRMWARE = "/FIRMWARE-TOKEN/admin.py"
+
 # The minimum sleep duration between two polls
 MIN_SLEEP_MINUTES = 5
 
